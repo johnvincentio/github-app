@@ -1,19 +1,28 @@
+//
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-
-import * as actions from '../redux/actions';
 
 import Gallery from './Gallery';
 
 import './App.scss';
 
 const data = [
-	{ id: 0, url: 'https://www.johnvincent.io/internet-resources/resources/images/logos/react.ico', description: 'React' },
-	{ id: 1, url: 'https://www.johnvincent.io/internet-resources/resources/images/logos/babel.ico', description: 'Babel' },
-	{ id: 2, url: 'https://www.johnvincent.io/internet-resources/resources/images/logos/webpack.ico', description: 'Webpack' },
+	{
+		id: 0,
+		url: 'https://www.johnvincent.io/internet-resources/resources/images/logos/react.ico',
+		description: 'React'
+	},
+	{
+		id: 1,
+		url: 'https://www.johnvincent.io/internet-resources/resources/images/logos/babel.ico',
+		description: 'Babel'
+	},
+	{
+		id: 2,
+		url: 'https://www.johnvincent.io/internet-resources/resources/images/logos/webpack.ico',
+		description: 'Webpack'
+	}
 ];
 // const message = require('./message');
 // document.write(message.sayHello());
@@ -28,7 +37,7 @@ class App extends React.Component {
 
 	componentDidMount() {
 		console.log('>>> App; componentDidMount');
-		this.props.actions.getUserData();
+		// this.props.actions.getUserData();
 		console.log('<<< App; componentDidMount');
 	}
 
@@ -44,16 +53,8 @@ class App extends React.Component {
 
 App.propTypes = {
 	actions: PropTypes.shape({
-		getUserData: PropTypes.func.isRequired,
-	}).isRequired,
+		getUserData: PropTypes.func.isRequired
+	}).isRequired
 };
 
-const mapStateToProps = state => ({
-	data: state.dataReducer.data,
-});
-
-const mapDispatchToProps = dispatch => ({
-	actions: bindActionCreators(actions, dispatch),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
