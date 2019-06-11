@@ -6,7 +6,7 @@ import React from 'react';
 
 class Follower extends React.Component {
 	render() {
-		console.log('Follower::render(); props ', this.props);
+		// console.log('Follower::render(); props ', this.props);
 		const { data } = this.props;
 		return (
 			<div>

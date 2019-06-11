@@ -147,7 +147,7 @@ const plugins = [
 	// new CleanWebpackPlugin([DIST_FOLDER]),
 
 	// list all React app required env variables
-	new webpack.EnvironmentPlugin(['HOME_URL', 'NODE_ENV', 'GOOGLE_APP_ID']),
+	new webpack.EnvironmentPlugin(['HOME_URL', 'NODE_ENV', 'GOOGLE_APP_ID', 'GITHUB_TOKEN']),
 
 	HTMLPlugin,
 	// new InlineSourcePlugin(),

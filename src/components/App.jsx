@@ -11,6 +11,8 @@ import Followers from './Followers';
 
 import './App.scss';
 
+const TOKEN = process.env.GITHUB_TOKEN;
+
 class App extends React.Component {
 	state = {
 		users: {},
@@ -18,11 +20,29 @@ class App extends React.Component {
 		error: null,
 		isLoading: false
 	};
+	/*
+const env = {
+	API_BASE_URL: process.env.API_BASE_URL,
+	ACCESS_KEY: process.env.ACCESS_KEY
+}
+
+export default axios.create({
+	baseURL: env.API_BASE_URL,
+	headers: {
+		Authorization: `Client-ID ${env.ACCESS_KEY}`,
+	}
+});
+*/
 
 	onSearchSubmit = async search => {
+		console.log('TOKEN ', TOKEN);
 		this.setState({ isLoading: true });
 		try {
-			const response = await axios.get(`https://api.github.com/users/${search}`);
+			const response = await axios.get(`https://api.github.com/users/${search}`, {
+				headers: {
+					Authorization: `token ${TOKEN}`
+				}
+			});
 			// console.log('response ', response);
 			// console.log('Success!');
 			// console.log(response.status);
@@ -55,6 +75,9 @@ class App extends React.Component {
 		if (isLoading) {
 			return <p>Loading ...</p>;
 		}
+		if (error) {
+			return <p>{error.message}</p>;
+		}
 		return (
 			<div className="ui container">
 				<div className="outer">App...</div>
@@ -62,7 +85,7 @@ class App extends React.Component {
 				<Search onSubmit={this.onSearchSubmit} error={this.state.error} />
 				{error && <div>Error: {error}</div>}
 				{listUser && <User user={users.user} />}
-				{listUser && <Followers id={users.user.id} url={users.user.followers_url} />}
+				{listUser && <Followers id={users.user.id} url={users.user.followers_url} count={users.user.followers} />}
 			</div>
 		);
 	}

@@ -64,3 +64,5 @@ export const fetchWidget = id => async dispatch => {
 ```
 
 https://github.com/axios/axios
+
+https://www.robinwieruch.de/react-fetching-data/
