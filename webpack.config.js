@@ -126,46 +126,9 @@ config.module = {
 			loader: 'babel-loader'
 		},
 		{
-			test: /\.(ts|tsx)$/,
-			exclude: /node_modules/,
-			loader: 'babel-loader'
-		},
-		{
 			test: /\.(sass|scss)$/,
-			include: INCLUDE_SCSS_FOLDER,
-			exclude: [SCSS_FOLDER, /node_modules/],
+			exclude: [/node_modules/],
 			use: ['style-loader', 'css-loader', 'sass-loader']
-		},
-		{
-			test: /\.(sass|scss)$/,
-			include: SCSS_FOLDER,
-			exclude: [INCLUDE_SCSS_FOLDER, /node_modules/],
-			use: [
-				{
-					loader: MiniCssExtractPlugin.loader
-				},
-				{
-					loader: 'css-loader',
-					options: {
-						sourceMap: true,
-						modules: true,
-						localIdentName: '[local]___[hash:base64:5]'
-					}
-				},
-				{
-					loader: 'sass-loader'
-				}
-			]
-		},
-		{
-			test: /\.css$/,
-			include: INCLUDE_CSS_FOLDER,
-			exclude: [INCLUDE_SCSS_FOLDER, /node_modules/],
-			use: [
-				MiniCssExtractPlugin.loader,
-				{ loader: 'css-loader', options: { url: false, sourceMap: true } },
-				{ loader: 'sass-loader', options: { sourceMap: true } }
-			]
 		},
 		{
 			test: /\.(png|jpg|jpeg|gif|ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
