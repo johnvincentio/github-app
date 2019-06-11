@@ -13,14 +13,13 @@ class Followers extends React.Component {
 		super(props);
 		this.state = {
 			id: props.id,
-			url: props.url,
 			followers: []
 		};
 	}
 
 	componentDidMount() {
 		console.log('>>> Followers; componentDidMount; props ', this.props);
-		this.fetchFollowers();
+		this.fetchFollowers(this.props.url);
 		console.log('<<< Followers; componentDidMount');
 	}
 
@@ -28,28 +27,23 @@ class Followers extends React.Component {
 		console.log('>>> Followers; componentDidUpdate; props ', this.props, ' prevProps ', prevProps);
 		if (prevProps.id !== this.props.id) {
 			console.log('>>> Followers; componentDidUpdate; get fetchFollowers');
-			this.fetchFollowers();
+			this.fetchFollowers(this.props.url);
 		}
 		console.log('<<< Followers; componentDidUpdate');
 	}
 
-	async fetchFollowers() {
+	fetchFollowers = url => {
 		console.log('*** Followers::fetchFollowers');
-		try {
-			const response = await axios.get(this.state.url);
-			console.log('response ', response);
-			console.log('Success!');
-			console.log(response.status);
-			console.log(response.data);
-			const { data } = response;
-			this.setState({ followers: data, errorText: null });
-		} catch (e) {
-			console.error('Failure!');
-			console.error(e.response.status);
-			console.log('response ', e.response);
-			this.setState({ followers: null, errorText: `${e.response.data.message}` });
-		}
-	}
+		axios
+			.get(url)
+			.then(response => {
+				const { data } = response;
+				this.setState({ followers: data, errorText: null });
+			})
+			.catch(error => {
+				this.setState({ followers: null, errorText: `${error.response.data.message}` });
+			});
+	};
 
 	renderList() {
 		const renderedList = this.state.followers.map(follower => <Follower key={follower.id} data={follower} />);
@@ -63,3 +57,23 @@ class Followers extends React.Component {
 }
 
 export default Followers;
+
+/*
+	fetchFollowers = async url => {
+		console.log('*** Followers::fetchFollowers');
+		try {
+			const response = await axios.get(url);
+			// console.log('response ', response);
+			// console.log('Success!');
+			// console.log(response.status);
+			// console.log(response.data);
+			const { data } = response;
+			this.setState({ followers: data, errorText: null });
+		} catch (e) {
+			// console.error('Failure!');
+			// console.error(e.response.status);
+			// console.log('response ', e.response);
+			this.setState({ followers: null, errorText: `${e.response.data.message}` });
+		}
+	};
+*/

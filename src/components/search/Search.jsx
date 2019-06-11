@@ -27,7 +27,6 @@ class Search extends React.Component {
 	};
 
 	render() {
-		const error = this.props.errorText != null;
 		return (
 			<section className="search">
 				<form className="search-form" onSubmit={this.onFormSubmit}>
@@ -47,7 +46,6 @@ class Search extends React.Component {
 						</button>
 					</div>
 				</form>
-				{error && <div>Error: {this.props.errorText}</div>}
 			</section>
 		);
 	}
