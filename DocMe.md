@@ -66,3 +66,18 @@ export const fetchWidget = id => async dispatch => {
 https://github.com/axios/axios
 
 https://www.robinwieruch.de/react-fetching-data/
+
+https://developer.github.com/v3/#authentication
+
+# Github Token
+
+* [Github](https://github.com/)
+* Settings
+* Developer Settings
+* Personal Access Tokens
+* Generate new token
+* Provide your github password
+* Note
+	- Give it a meaningful name
+* Leave All scopes <strong>unchecked</strong>
+* Generate token
