@@ -69,6 +69,10 @@ https://www.robinwieruch.de/react-fetching-data/
 
 https://developer.github.com/v3/#authentication
 
+# Github API
+
+Information on the GitHub API is available here: [GitHub API](https://t.yesware.com/tt/f7d714dfe952964fb8a66c04148aec7ba5b2d297/0f25765a945028f6e44dee5595cea2ee/7b0004ac896f68f234bfc27eff266c95/developer.github.com/v3/)
+
 # Github Token
 
 * [Github](https://github.com/)

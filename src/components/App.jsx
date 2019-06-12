@@ -20,22 +20,8 @@ class App extends React.Component {
 		error: null,
 		isLoading: false
 	};
-	/*
-const env = {
-	API_BASE_URL: process.env.API_BASE_URL,
-	ACCESS_KEY: process.env.ACCESS_KEY
-}
-
-export default axios.create({
-	baseURL: env.API_BASE_URL,
-	headers: {
-		Authorization: `Client-ID ${env.ACCESS_KEY}`,
-	}
-});
-*/
 
 	onSearchSubmit = async search => {
-		console.log('TOKEN ', TOKEN);
 		this.setState({ isLoading: true });
 		try {
 			const response = await axios.get(`https://api.github.com/users/${search}`, {
@@ -43,10 +29,6 @@ export default axios.create({
 					Authorization: `token ${TOKEN}`
 				}
 			});
-			// console.log('response ', response);
-			// console.log('Success!');
-			// console.log(response.status);
-			// console.log(response.data);
 			const { data } = response;
 			this.setState({
 				users: { id: data.id, user: data },
@@ -55,9 +37,6 @@ export default axios.create({
 				isLoading: false
 			});
 		} catch (error) {
-			// console.error('Failure!');
-			// console.error(e.response.status);
-			// console.log('response ', e.response);
 			this.setState({
 				user: null,
 				error,

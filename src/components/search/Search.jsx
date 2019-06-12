@@ -14,10 +14,8 @@ class Search extends React.Component {
 
 	onFormSubmit = event => {
 		event.preventDefault();
-		console.log(this.state.term);
-		console.log(this.props);
 		this.props.onSubmit(this.state.term);
-		this.setState({ term: '' });
+		// this.setState({ term: '' });
 	};
 
 	handleChange = event => {
@@ -27,12 +25,11 @@ class Search extends React.Component {
 	};
 
 	render() {
+		console.log('Search::render()');
 		return (
 			<section className="search">
 				<form className="search-form" onSubmit={this.onFormSubmit}>
 					<div className="search-field">
-						{/* <label htmlFor="search">
-							Widget search */}
 						<input
 							id="search"
 							type="text"

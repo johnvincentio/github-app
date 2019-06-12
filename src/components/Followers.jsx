@@ -14,7 +14,8 @@ class Followers extends React.Component {
 		this.state = {
 			id: props.id,
 			count: props.count,
-			followers: {},
+			url: props.url,
+			followers: [],
 			page: null,
 			error: null,
 			isLoading: false
@@ -23,37 +24,35 @@ class Followers extends React.Component {
 
 	componentDidMount() {
 		console.log('>>> Followers; componentDidMount; props ', this.props);
-		this.fetchFollowers(this.props.url);
+		this.fetchFollowers();
 		console.log('<<< Followers; componentDidMount');
 	}
 
+	// TODO; may not need this...
 	componentDidUpdate(prevProps) {
 		console.log('>>> Followers; componentDidUpdate; props ', this.props, ' prevProps ', prevProps);
 		if (prevProps.id !== this.props.id) {
-			console.log('>>> Followers; componentDidUpdate; get fetchFollowers');
-			this.fetchFollowers(this.props.url);
+			console.log('--- Followers; componentDidUpdate; get fetchFollowers');
+			this.fetchFollowers();
 		}
 		console.log('<<< Followers; componentDidUpdate');
 	}
 
-	/*
-  handleClick = () => {
-    // this.setState({ open: !this.state.open });
-    this.setState(prevState => ({ open: !prevState.open }));
-	};
-					headers: {
-					Authorization: `token ${TOKEN}`
-				}
-*/
-
-	fetchFollowers = (url, page = null) => {
-		if (!page) {
-			page = 1;
+	fetchFollowers = (page = 1) => {
+		console.log(
+			'*** Followers::fetchFollowers; page ',
+			page,
+			' this.state ',
+			this.state,
+			' pageCount ',
+			this.pageCount()
+		);
+		if (page < 1 || page > this.pageCount()) {
+			return;
 		}
-		console.log('*** Followers::fetchFollowers; page ', page);
 		this.setState({ isLoading: true });
 		axios
-			.get(url, {
+			.get(this.state.url, {
 				params: {
 					page
 				},
@@ -63,29 +62,12 @@ class Followers extends React.Component {
 			})
 			.then(response => {
 				const { data } = response;
-
-				console.log('page ', page);
-				const obj = {};
-				obj[page] = data;
-
-				console.log('obj ', obj);
-				// const abc = { ...this.state.followers, ...fred };
-				// // abc.page = data;
-				// console.log('abc ', abc);
-				//     this.setState(prevState => ({ open: !prevState.open }));
-				this.setState(prevState => ({
-					followers: { ...prevState.followers, ...obj },
+				this.setState({
+					followers: data,
 					error: null,
 					isLoading: false,
 					page
-				}));
-
-				// this.setState({
-				// 	followers: { ...this.state.followers, ...obj },
-				// 	error: null,
-				// 	isLoading: false,
-				// 	page
-				// });
+				});
 			})
 			.catch(error => {
 				this.setState({
@@ -98,17 +80,11 @@ class Followers extends React.Component {
 	};
 
 	handlePrevious = () => {
-		console.log('Followers::handlePrevious; this.state ', this.state, ' pageCount ', this.pageCount());
-		if (this.state.page - 1 > 0) {
-			this.fetchFollowers(this.props.url, this.state.page - 1);
-		}
+		this.fetchFollowers(this.state.page - 1);
 	};
 
 	handleNext = () => {
-		console.log('Followers::handleNext; this.state ', this.state, ' pageCount ', this.pageCount());
-		if (this.state.page + 1 <= this.pageCount()) {
-			this.fetchFollowers(this.props.url, this.state.page + 1);
-		}
+		this.fetchFollowers(this.state.page + 1);
 	};
 
 	pageCount = () => {
@@ -117,10 +93,8 @@ class Followers extends React.Component {
 
 	renderList() {
 		console.log('Followers::renderList(); props ', this.props, ' this.state ', this.state);
-		const { page, followers } = this.state;
-		const items = followers[page];
-		console.log('items ', items);
-		const renderedList = items.map(follower => <Follower key={follower.id} data={follower} />);
+		const { followers } = this.state;
+		const renderedList = followers.map(follower => <Follower key={follower.id} data={follower} />);
 		return <div className="ui relaxed divided list">{renderedList}</div>;
 	}
 

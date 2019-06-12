@@ -17,8 +17,6 @@ Since some users (e.g. mrdoob, holman, etc.) have many thousands of followers, G
 
 Create a "load more" button that, when clicked, fetches the next payload of followers. This button should persist until there are no more pages of followers to fetch.
 
-Information on the GitHub API is available here: [GitHub API](https://t.yesware.com/tt/f7d714dfe952964fb8a66c04148aec7ba5b2d297/0f25765a945028f6e44dee5595cea2ee/7b0004ac896f68f234bfc27eff266c95/developer.github.com/v3/)
-
 The UX/UI is totally up to you. If you like, get creative and add additional features a user might find useful!
 
 ## Technical spec
