@@ -65,6 +65,12 @@ const extractCSSBundle = new MiniCssExtractPlugin({
 });
 
 /*
+ * Define home url
+ */
+const { HOME_URL } = process.env;
+console.log('HOME_URL ', HOME_URL);
+
+/*
  * Define production mode
  */
 
@@ -81,7 +87,7 @@ const config = {};
 config.entry = ['./src/index.jsx', './scss/styles.scss'];
 
 config.resolve = {
-	extensions: ['.js', '.jsx', '.ts', '.tsx']
+	extensions: ['.js', '.jsx']
 };
 
 /*
@@ -210,7 +216,7 @@ if (!PRODUCTION_MODE) {
 if (PRODUCTION_MODE) {
 	config.output = {
 		path: DIST_FOLDER,
-		publicPath: '/',
+		publicPath: `${HOME_URL}/`,
 		chunkFilename: '[name].[chunkhash].bundle.js',
 		filename: '[name].[chunkhash].bundle.js'
 	};
@@ -221,7 +227,7 @@ if (PRODUCTION_MODE) {
 if (!PRODUCTION_MODE) {
 	config.output = {
 		path: DIST_FOLDER,
-		publicPath: '/',
+		publicPath: `${HOME_URL}/`,
 		chunkFilename: '[name].bundle.js',
 		filename: '[name].bundle.js'
 	};
