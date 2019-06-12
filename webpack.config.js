@@ -68,7 +68,7 @@ const extractCSSBundle = new MiniCssExtractPlugin({
  * Define home url
  */
 const { HOME_URL } = process.env;
-console.log('HOME_URL ', HOME_URL);
+// console.log('HOME_URL ', HOME_URL);
 
 /*
  * Define production mode
