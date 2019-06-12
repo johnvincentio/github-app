@@ -117,6 +117,9 @@ class Followers extends React.Component {
 					<button type="button" className="more-button" onClick={this.handlePrevious}>
 						previous...
 					</button>
+					<div>
+						Page {page} of {this.pageCount()}
+					</div>
 					<button type="button" className="more-button" onClick={this.handleNext}>
 						next...
 					</button>
