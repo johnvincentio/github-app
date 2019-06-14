@@ -1,0 +1,28 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  color: #444;
+  text-align: center;
+  line-height: 1.2;
+}
+
+figure,
+figcaption,
+h1,
+h2,
+h3 {
+  padding: 0;
+  margin: 0;
+}
+
+.error {
+  color: red;
+  font-size: 22px;
+  font-weight: bold;
+}

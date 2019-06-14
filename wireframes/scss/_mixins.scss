@@ -1,0 +1,17 @@
+@mixin button-to-div {
+  border: none transparent;
+  outline: none;
+  text-decoration: none;
+  border-radius: 2px;
+  line-height: normal;
+  white-space: nowrap;
+  text-align: center;
+  cursor: pointer;
+  text-rendering: auto;
+}
+
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
