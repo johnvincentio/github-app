@@ -7,10 +7,8 @@ import axios from 'axios';
 
 import Nav from './Nav';
 import Header from './header/Header';
-
 import User from './User';
 import UserButtons from './UserButtons';
-
 import Followers from './Followers';
 
 const TOKEN = process.env.GITHUB_TOKEN;
@@ -48,16 +46,13 @@ class App extends React.Component {
 	};
 
 	render() {
-		console.log('App::render()');
-		const { users, user, isLoading, error } = this.state;
+		console.log('App::render(); this.state ', this.state);
+		const { users, user, isLoading } = this.state;
 
 		console.log('App::render(); user ', user, ' users ', users);
 		const listUser = user !== null;
 		if (isLoading) {
 			return <p>Loading ...</p>;
-		}
-		if (error) {
-			return <p>{error.message}</p>;
 		}
 		return (
 			<div>
