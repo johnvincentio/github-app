@@ -1,7 +1,6 @@
 //
 
 import React from 'react';
-import { userInfo } from 'os';
 
 /* eslint-disable react/prefer-stateless-function */
 

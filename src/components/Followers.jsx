@@ -4,8 +4,6 @@ import React from 'react';
 
 import axios from 'axios';
 
-import Follower from './Follower';
-
 const TOKEN = process.env.GITHUB_TOKEN;
 
 class Followers extends React.Component {
