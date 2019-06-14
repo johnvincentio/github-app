@@ -94,8 +94,14 @@ class Followers extends React.Component {
 	renderList() {
 		console.log('Followers::renderList(); props ', this.props, ' this.state ', this.state);
 		const { followers } = this.state;
-		const renderedList = followers.map(follower => <Follower key={follower.id} data={follower} />);
-		return <div className="ui relaxed divided list">{renderedList}</div>;
+		return followers.map(item => (
+			<figure key={item.id} className="followers--item">
+				<img src={item.avatar_url} alt={item.login} />
+				<figcaption>
+					<p>{item.login}</p>
+				</figcaption>
+			</figure>
+		));
 	}
 
 	render() {
@@ -115,35 +121,7 @@ class Followers extends React.Component {
 			<section className="followers">
 				<h2 className="followers--header">Followers</h2>
 
-				<div className="followers--list">
-					<figure className="followers--item">
-						<img src="https://avatars1.githubusercontent.com/u/931710?v=4" alt="vpr" />
-						<figcaption>
-							<p>vpr</p>
-						</figcaption>
-					</figure>
-
-					<figure className="followers--item">
-						<img src="https://avatars0.githubusercontent.com/u/2214?v=4" alt="Name" />
-						<figcaption>
-							<p>Name</p>
-						</figcaption>
-					</figure>
-
-					<figure className="followers--item">
-						<img src="https://avatars1.githubusercontent.com/u/2289?v=4" alt="Name" />
-						<figcaption>
-							<p>Name</p>
-						</figcaption>
-					</figure>
-
-					<figure className="followers--item">
-						<img src="https://avatars2.githubusercontent.com/u/14958?v=4" alt="Name" />
-						<figcaption>
-							<p>Name</p>
-						</figcaption>
-					</figure>
-				</div>
+				<div className="followers--list">{this.renderList()}</div>
 			</section>
 		);
 	}
