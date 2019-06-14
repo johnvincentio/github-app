@@ -112,6 +112,46 @@ class Followers extends React.Component {
 		}
 		// const isMore =
 		return (
+			<section className="followers">
+				<h2 className="followers--header">Followers</h2>
+
+				<div className="followers--list">
+					<figure className="followers--item">
+						<img src="https://avatars1.githubusercontent.com/u/931710?v=4" alt="vpr" />
+						<figcaption>
+							<p>vpr</p>
+						</figcaption>
+					</figure>
+
+					<figure className="followers--item">
+						<img src="https://avatars0.githubusercontent.com/u/2214?v=4" alt="Name" />
+						<figcaption>
+							<p>Name</p>
+						</figcaption>
+					</figure>
+
+					<figure className="followers--item">
+						<img src="https://avatars1.githubusercontent.com/u/2289?v=4" alt="Name" />
+						<figcaption>
+							<p>Name</p>
+						</figcaption>
+					</figure>
+
+					<figure className="followers--item">
+						<img src="https://avatars2.githubusercontent.com/u/14958?v=4" alt="Name" />
+						<figcaption>
+							<p>Name</p>
+						</figcaption>
+					</figure>
+				</div>
+			</section>
+		);
+	}
+}
+
+export default Followers;
+
+/*
 			<div>
 				<div>
 					<button type="button" className="more-button" onClick={this.handlePrevious}>
@@ -126,11 +166,7 @@ class Followers extends React.Component {
 				</div>
 				<div>{this.renderList()}</div>
 			</div>
-		);
-	}
-}
-
-export default Followers;
+*/
 
 /*
 	fetchFollowers = async url => {

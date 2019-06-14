@@ -3,7 +3,7 @@
 .github {
   background-color: black !important;
   &:hover {
-    background-color: grey !important;
+    background-color: rgb(77, 64, 64) !important;
   }
 }
 
@@ -64,6 +64,7 @@
     width: 140px;
     background-color: $primary-color;
     color: white;
+    text-decoration: none;
     @include opacity(0.9);
     &:hover {
       background-color: $dark-primary-color;

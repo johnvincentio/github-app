@@ -8,8 +8,9 @@ import axios from 'axios';
 import Nav from './Nav';
 import Header from './header/Header';
 
-import Search from './search/Search';
 import User from './User';
+import UserButtons from './UserButtons';
+
 import Followers from './Followers';
 
 const TOKEN = process.env.GITHUB_TOKEN;
@@ -62,12 +63,14 @@ class App extends React.Component {
 			<div>
 				<Nav />
 				<main role="main">
-					<Header />
+					<Header onSubmit={this.onSearchSubmit} error={this.state.error} />
+					{listUser && <User user={users.user} />}
+					{listUser && <UserButtons user={users.user} />}
+					{listUser && <Followers id={users.user.id} url={users.user.followers_url} count={users.user.followers} />}
 				</main>
 
 				{/* <div>Search for a User</div>
-				<Search onSubmit={this.onSearchSubmit} error={this.state.error} />
-				{error && <div>Error: {error}</div>}
+
 				{listUser && <User user={users.user} />}
 				{listUser && <Followers id={users.user.id} url={users.user.followers_url} count={users.user.followers} />}
 			 */}

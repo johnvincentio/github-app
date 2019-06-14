@@ -9,13 +9,23 @@ class User extends React.Component {
 		const { user } = this.props;
 		console.log('User::render(); props ', this.props);
 		return (
-			<div>
-				<div>name: {user.name}</div>
-				<div>Followers: {user.followers}</div>
-				<div>Repos_url: {user.repos_url}</div>
-				<div>Avatar_url: {user.avatar_url}</div>
-				<div>Followers_url: {user.followers_url}</div>
-			</div>
+			<section className="user">
+				<div className="user--figure">
+					<figure>
+						<img src={user.avatar_url} alt={user.login} />
+						<figcaption>
+							<h2 className="user--title">{user.name}</h2>
+							<p className="user--text">{user.location}</p>
+						</figcaption>
+					</figure>
+				</div>
+
+				<div className="user--bio">
+					<h2 className="user--bio-text">Username: {user.login}</h2>
+					<div className="user--bio-text">Company: {user.company}</div>
+					<div className="user--bio-text">Bio: {user.bio}</div>
+				</div>
+			</section>
 		);
 	}
 }

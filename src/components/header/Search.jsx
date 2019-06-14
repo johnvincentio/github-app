@@ -25,23 +25,18 @@ class Search extends React.Component {
 	};
 
 	render() {
-		console.log('Search::render()');
+		console.log('Search::render(); props ', this.props);
 		return (
 			<section className="search">
-				<form className="search-form" onSubmit={this.onFormSubmit}>
-					<div className="search-field">
-						<input
-							id="search"
-							type="text"
-							value={this.state.term}
-							onChange={e => this.handleChange(e)}
-							placeholder="User name"
-							className="search-input"
-						/>
-						<button type="button" className="search-button">
-							<Icon name="search" css="search-icon" />
-						</button>
-					</div>
+				<form onSubmit={this.onFormSubmit}>
+					<input
+						id="search"
+						type="text"
+						value={this.state.term}
+						onChange={e => this.handleChange(e)}
+						placeholder="Search Users..."
+						className="header--search input-field"
+					/>
 				</form>
 			</section>
 		);
