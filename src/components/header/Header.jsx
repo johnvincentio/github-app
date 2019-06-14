@@ -2,8 +2,6 @@
 
 import React from 'react';
 
-import './header.scss';
-
 /* eslint-disable react/prefer-stateless-function */
 
 class Header extends React.Component {

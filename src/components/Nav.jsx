@@ -2,8 +2,6 @@
 
 import React from 'react';
 
-import './nav.scss';
-
 /* eslint-disable react/prefer-stateless-function */
 
 class Nav extends React.Component {
