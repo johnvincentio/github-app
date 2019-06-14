@@ -47,7 +47,7 @@ class App extends React.Component {
 
 	render() {
 		console.log('App::render(); this.state ', this.state);
-		const { users, user, isLoading } = this.state;
+		const { users, user, isLoading, error } = this.state;
 
 		console.log('App::render(); user ', user, ' users ', users);
 		const listUser = user !== null;
@@ -62,6 +62,7 @@ class App extends React.Component {
 					{listUser && <User user={users.user} />}
 					{listUser && <UserButtons user={users.user} />}
 					{listUser && <Followers id={users.user.id} url={users.user.followers_url} count={users.user.followers} />}
+					{error && <div className="error">Unable to get user; {error.message}</div>}
 				</main>
 			</div>
 		);

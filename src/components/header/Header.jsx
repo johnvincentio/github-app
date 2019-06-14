@@ -14,15 +14,12 @@ import Search from './Search';
 class Header extends React.Component {
 	render() {
 		console.log('Header::render; props ', this.props);
-		const { error } = this.props;
 		return (
 			<header className="header" role="banner">
 				<h1 className="header--title">MyGithub</h1>
 				<h2 className="header--subtitle">Lookup your favorite Github users</h2>
 
 				<Search onSubmit={this.props.onSubmit} />
-
-				{error && <div className="error">{this.props.error.message}</div>}
 			</header>
 		);
 	}
