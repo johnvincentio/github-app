@@ -37,14 +37,6 @@ class Followers extends React.Component {
 	}
 
 	fetchFollowers = (page = 1) => {
-		console.log(
-			'*** Followers::fetchFollowers; page ',
-			page,
-			' this.state ',
-			this.state,
-			' pageCount ',
-			this.pageCount()
-		);
 		if (page < 1 || page > this.pageCount()) {
 			return;
 		}
@@ -109,7 +101,7 @@ class Followers extends React.Component {
 			return <p>Loading ...</p>;
 		}
 		if (error) {
-			return <p>{error.message}</p>;
+			return <p className="error">Unable to get followers; {error.message}</p>;
 		}
 		if (!page || !followers[page]) {
 			return null;
