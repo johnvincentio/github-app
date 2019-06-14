@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import './Nav.scss';
+import './nav.scss';
 
 /* eslint-disable react/prefer-stateless-function */
 
