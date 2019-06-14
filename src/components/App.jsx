@@ -12,8 +12,6 @@ import Search from './search/Search';
 import User from './User';
 import Followers from './Followers';
 
-import './App.scss';
-
 const TOKEN = process.env.GITHUB_TOKEN;
 
 class App extends React.Component {
