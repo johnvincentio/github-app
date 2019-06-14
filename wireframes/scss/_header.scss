@@ -24,14 +24,3 @@
     width: 50%;
   }
 }
-
-@media only screen and (min-width: 640px) {
-  .header {
-    &--title {
-    }
-    &--subtitle {
-      font-weight: 500;
-      margin: 40px 0;
-    }
-  }
-}

@@ -26,6 +26,12 @@
     width: 100px;
     height: auto;
     border-radius: 50%;
+    &:hover {
+      background-color: $dark-primary-color;
+      @include transition(all 0.3s);
+      cursor: pointer;
+      @include opacity(1);
+    }
   }
 }
 
