@@ -21,8 +21,8 @@ class User extends React.Component {
 
 				<div className="user--bio">
 					<h2 className="user--bio-text">Username: {user.login}</h2>
-					<div className="user--bio-text">Company: {user.company}</div>
-					<div className="user--bio-info">Bio: {user.bio}</div>
+					{user.company && <div className="user--bio-text">Company: {user.company}</div>}
+					{user.bio && <div className="user--bio-info">Bio: {user.bio}</div>}
 				</div>
 			</section>
 		);

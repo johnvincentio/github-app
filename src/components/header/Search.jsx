@@ -3,10 +3,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Icon from '../tools/Icon';
-
-// import './search.scss';
-
 class Search extends React.Component {
 	state = {
 		term: ''
@@ -25,7 +21,7 @@ class Search extends React.Component {
 	};
 
 	render() {
-		console.log('Search::render(); props ', this.props);
+		// console.log('Search::render(); props ', this.props);
 		return (
 			<section className="search">
 				<form onSubmit={this.onFormSubmit}>

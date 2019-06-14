@@ -22,6 +22,7 @@ class App extends React.Component {
 	};
 
 	onSearchSubmit = async search => {
+		// console.log('App::onSearchSubmit; search ', search);
 		this.setState({ isLoading: true });
 		try {
 			const response = await axios.get(`https://api.github.com/users/${search}`, {
@@ -46,10 +47,10 @@ class App extends React.Component {
 	};
 
 	render() {
-		console.log('App::render(); this.state ', this.state);
+		// console.log('App::render(); this.state ', this.state);
 		const { users, user, isLoading, error } = this.state;
 
-		console.log('App::render(); user ', user, ' users ', users);
+		// console.log('App::render(); user ', user, ' users ', users);
 		const listUser = user !== null;
 		if (isLoading) {
 			return <p>Loading ...</p>;
@@ -61,7 +62,14 @@ class App extends React.Component {
 					<Header onSubmit={this.onSearchSubmit} error={this.state.error} />
 					{listUser && <User user={users.user} />}
 					{listUser && <UserButtons user={users.user} />}
-					{listUser && <Followers id={users.user.id} url={users.user.followers_url} count={users.user.followers} />}
+					{listUser && (
+						<Followers
+							id={users.user.id}
+							url={users.user.followers_url}
+							count={users.user.followers}
+							onSelect={this.onSearchSubmit}
+						/>
+					)}
 					{error && <div className="error">Unable to get user; {error.message}</div>}
 				</main>
 			</div>
@@ -108,22 +116,3 @@ export default App;
 		}
 	}
 */
-
-/*
-	onSearchSubmit = async (term) => {
-		const response = await youtube.get('/search', {
-			params: { q: term }
-		});
-		console.log('response ', response);
-		this.setState({
-			videos: response.data.items,
-			selectedVideo: response.data.items[0]
-		});
-	};
-*/
-
-// onSearchSubmit2 = search => {
-// 	console.log('App::onSearchSubmit; search ', search);
-// 	this.setState({ user: null });
-// 	this.fetchData(search);
-// };

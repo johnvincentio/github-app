@@ -6,7 +6,6 @@ import React from 'react';
 
 class UserButtons extends React.Component {
 	render() {
-		console.log('UserButtons::render(); props ', this.props);
 		const { user } = this.props;
 		return (
 			<div className="user--buttons">

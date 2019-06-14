@@ -81,12 +81,16 @@ class Followers extends React.Component {
 		return Math.ceil(this.state.count / 30);
 	};
 
+	selectUser = login => {
+		this.props.onSelect(login);
+	};
+
 	renderList() {
-		console.log('Followers::renderList(); props ', this.props, ' this.state ', this.state);
+		// console.log('Followers::renderList(); props ', this.props, ' this.state ', this.state);
 		const { followers } = this.state;
 		return followers.map(item => (
 			<figure key={item.id} className="followers--item">
-				<img src={item.avatar_url} alt={item.login} />
+				<img src={item.avatar_url} alt={item.login} onClick={login => this.selectUser(item.login)} />
 				<figcaption>
 					<p>{item.login}</p>
 				</figcaption>
@@ -95,7 +99,7 @@ class Followers extends React.Component {
 	}
 
 	render() {
-		console.log('Followers::render(); props ', this.props, ' this.state ', this.state);
+		// console.log('Followers::render(); props ', this.props, ' this.state ', this.state);
 		const { followers, page, isLoading, error } = this.state;
 		if (isLoading) {
 			return <p>Loading ...</p>;
@@ -103,13 +107,13 @@ class Followers extends React.Component {
 		if (error) {
 			return <p className="error">Unable to get followers; {error.message}</p>;
 		}
-		if (!page || !followers[page]) {
+		if (!page) {
 			return null;
 		}
 
 		const isMore = page < this.pageCount();
 		const isPrevious = page > 1;
-		console.log('isMore ', isMore, ' isPrevious ', isPrevious);
+		// console.log('isMore ', isMore, ' isPrevious ', isPrevious);
 
 		return (
 			<section className="followers">
@@ -134,23 +138,3 @@ class Followers extends React.Component {
 }
 
 export default Followers;
-
-/*
-	fetchFollowers = async url => {
-		console.log('*** Followers::fetchFollowers');
-		try {
-			const response = await axios.get(url);
-			// console.log('response ', response);
-			// console.log('Success!');
-			// console.log(response.status);
-			// console.log(response.data);
-			const { data } = response;
-			this.setState({ followers: data, error: null });
-		} catch (e) {
-			// console.error('Failure!');
-			// console.error(e.response.status);
-			// console.log('response ', e.response);
-			this.setState({ followers: null, error: `${e.response.data.message}` });
-		}
-	};
-*/
