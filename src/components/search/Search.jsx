@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import Icon from '../tools/Icon';
 
-import './search.scss';
+// import './search.scss';
 
 class Search extends React.Component {
 	state = {

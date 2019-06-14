@@ -5,6 +5,9 @@ import PropTypes from 'prop-types';
 
 import axios from 'axios';
 
+import Nav from './Nav';
+import Header from './header/Header';
+
 import Search from './search/Search';
 import User from './User';
 import Followers from './Followers';
@@ -58,13 +61,18 @@ class App extends React.Component {
 			return <p>{error.message}</p>;
 		}
 		return (
-			<div className="ui container">
-				<div className="outer">App...</div>
-				<div>Search for a User</div>
+			<div>
+				<Nav />
+				<main role="main">
+					<Header />
+				</main>
+
+				{/* <div>Search for a User</div>
 				<Search onSubmit={this.onSearchSubmit} error={this.state.error} />
 				{error && <div>Error: {error}</div>}
 				{listUser && <User user={users.user} />}
 				{listUser && <Followers id={users.user.id} url={users.user.followers_url} count={users.user.followers} />}
+			 */}
 			</div>
 		);
 	}
