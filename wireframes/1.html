@@ -14,10 +14,11 @@
     <nav role="navigation">Nav</nav>
     <main role="main">
       <header class="header" role="banner">
-        <h1>MyGithub</h1>
-        <h2>Lookup your favorite Github users</h2>
+        <h1 class="header--title">MyGithub</h1>
+        <h2 class="header--subtitle">Lookup your favorite Github users</h2>
         <form>
           <input
+            class="header--search input-field"
             autofocus
             placeholder="Search Users..."
             type="text"
@@ -29,28 +30,30 @@
       </header>
 
       <section class="user">
-        <div class="figure">
+        <div class="user--figure">
           <figure>
             <img
-              src="https://avatars1.githubusercontent.com/u/1668?v=4"
+              src="https://avatars2.githubusercontent.com/u/1202528?v=4"
               alt="name"
             />
             <figcaption>
-              <h2>John McGrath</h2>
-              <p>San Francisco, CA</p>
+              <h2 class="user--title">John McGrath</h2>
+              <p class="user--text">San Francisco, CA</p>
             </figcaption>
           </figure>
         </div>
 
-        <div class="bio">
-          <h2>{bio}</h2>
-          <div>Username:</div>
-          <div>Company:</div>
-          <button>Github Profile</button>
-          <div>Followers: mn</div>
-          <div>Following: mn</div>
-          <div>Public Repos: mn</div>
-          <div>Public Gists: mn</div>
+        <div class="user--bio">
+          <h2 class="user--bio-text">Username:</h2>
+          <div class="user--bio-text">Company:</div>
+          <div class="user--bio-text">Bio:</div>
+          <div class="user--bio-buttons">
+            <button class="user--button github">Github Profile</button>
+            <button class="user--button">Followers: mn</button>
+            <button class="user--button">Following: mn</button>
+            <button class="user--button">Public Repos: mn</button>
+            <button class="user--button">Public Gists: mn</button>
+          </div>
         </div>
       </section>
 

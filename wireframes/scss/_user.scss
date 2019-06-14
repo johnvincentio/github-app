@@ -8,23 +8,70 @@
   border-radius: 5px;
   margin: 10px;
 
-  figure {
+  &--figure {
     width: 100%;
+    padding: 14px 0;
     img {
-      width: 150px;
+      width: 120px;
       height: auto;
       border-radius: 50%;
     }
   }
 
-  .bio {
+  &--title {
+    font-size: 1.6rem;
+    font-weight: 500;
+    padding-top: 12px;
+  }
+  &--text {
+    font-size: 1rem;
+    font-weight: 500;
+    padding-top: 6px;
+  }
+
+  &--bio {
     width: 100%;
-    background-color: white;
+    padding: 10px 0;
+
+    &-text {
+      font-size: 1rem;
+      font-weight: 400;
+      padding-bottom: 5px;
+    }
+
+    &-buttons {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  }
+
+  &--button {
+    display: block;
+    border-radius: 5px;
+    font-size: 12px;
+    padding: 12px;
+    margin: 12px auto;
+    width: 140px;
+    background-color: $primary-color;
+    color: white;
+    @include opacity(0.9);
+    &:hover {
+      background-color: $dark-primary-color;
+      @include transition(all 0.3s);
+      cursor: pointer;
+      @include opacity(1);
+    }
   }
 }
 
 @media only screen and (min-width: 640px) {
   .user {
-    flex-direction: row;
+    &--figure {
+      img {
+        width: 150px;
+      }
+    }
   }
 }

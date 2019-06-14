@@ -27,38 +27,13 @@ h3 {
   font-weight: bold;
 }
 
-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 10;
-  background-color: rgba(240, 240, 240, 0.9);
+.github {
+  background-color: black !important;
 }
 
-.header {
-  padding: 1rem 0;
-  background-color: #428bca;
-  background-image: linear-gradient(to left, #3071a9, #428bca);
-  color: white;
-}
-.header h1 {
-  font-size: 3rem;
-  font-weight: 500;
-  margin: 50px 0 20px 0;
-}
-.header h2 {
-  font-weight: 500;
-  margin: 40px 0;
-}
-.header form {
-  text-align: center;
-  margin: 0 auto;
-}
-.header input {
-  width: 35%;
+.input-field {
   box-sizing: border-box;
-  height: 2.4375rem;
+  height: 2.4rem;
   padding: 0.5rem;
   border: 1px solid #cacaca;
   margin: 0 0 1rem;
@@ -72,6 +47,39 @@ nav {
   -webkit-appearance: none;
 }
 
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background-color: rgba(240, 240, 240, 0.9);
+}
+
+.header {
+  padding: 8% 0 4% 0;
+  background-image: linear-gradient(to left, #3071a9, #428bca);
+  color: white;
+}
+.header--title {
+  font-size: 3rem;
+  font-weight: 500;
+  padding: 10px 0;
+}
+.header--subtitle {
+  font-weight: 500;
+  padding: 20px 0;
+}
+.header--search {
+  width: 50%;
+}
+
+@media only screen and (min-width: 640px) {
+  .header--subtitle {
+    font-weight: 500;
+    margin: 40px 0;
+  }
+}
 .user {
   display: flex;
   flex-direction: column;
@@ -80,22 +88,65 @@ nav {
   border-radius: 5px;
   margin: 10px;
 }
-.user figure {
+.user--figure {
   width: 100%;
+  padding: 14px 0;
 }
-.user figure img {
-  width: 150px;
+.user--figure img {
+  width: 120px;
   height: auto;
   border-radius: 50%;
 }
-.user .bio {
+.user--title {
+  font-size: 1.6rem;
+  font-weight: 500;
+  padding-top: 12px;
+}
+.user--text {
+  font-size: 1rem;
+  font-weight: 500;
+  padding-top: 6px;
+}
+.user--bio {
   width: 100%;
-  background-color: white;
+  padding: 10px 0;
+}
+.user--bio-text {
+  font-size: 1rem;
+  font-weight: 400;
+  padding-bottom: 5px;
+}
+.user--bio-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.user--button {
+  display: block;
+  border-radius: 5px;
+  font-size: 12px;
+  padding: 12px;
+  margin: 12px auto;
+  width: 140px;
+  background-color: #428bca;
+  color: white;
+  opacity: 0.9;
+}
+.user--button:hover {
+  background-color: #3071a9;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+  cursor: pointer;
+  opacity: 1;
 }
 
 @media only screen and (min-width: 640px) {
-  .user {
-    flex-direction: row;
+  .user--figure img {
+    width: 150px;
   }
 }
 .followers {
@@ -125,7 +176,7 @@ nav {
 
 @media only screen and (min-width: 640px) {
   .followers img {
-    width: 150px;
+    width: 125px;
   }
 }
 
