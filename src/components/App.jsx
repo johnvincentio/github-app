@@ -68,12 +68,6 @@ class App extends React.Component {
 					{listUser && <UserButtons user={users.user} />}
 					{listUser && <Followers id={users.user.id} url={users.user.followers_url} count={users.user.followers} />}
 				</main>
-
-				{/* <div>Search for a User</div>
-
-				{listUser && <User user={users.user} />}
-				{listUser && <Followers id={users.user.id} url={users.user.followers_url} count={users.user.followers} />}
-			 */}
 			</div>
 		);
 	}

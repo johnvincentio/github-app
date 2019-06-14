@@ -112,37 +112,36 @@ class Followers extends React.Component {
 			return <p>{error.message}</p>;
 		}
 		if (!page || !followers[page]) {
-			return <p>no page found</p>;
+			return null;
 		}
-		// const isMore =
+
+		const isMore = page < this.pageCount();
+		const isPrevious = page > 1;
+		console.log('isMore ', isMore, ' isPrevious ', isPrevious);
+
 		return (
 			<section className="followers">
 				<h2 className="followers--header">Followers</h2>
 
 				<div className="followers--list">{this.renderList()}</div>
+
+				<div className="followers--buttons">
+					<button type="button" className="followers--button" onClick={this.handlePrevious} disabled={!isPrevious}>
+						Previous...
+					</button>
+					<div className="followers--text">
+						Page {page} of {this.pageCount()}
+					</div>
+					<button type="button" className="followers--button" onClick={this.handleNext} disabled={!isMore}>
+						Next...
+					</button>
+				</div>
 			</section>
 		);
 	}
 }
 
 export default Followers;
-
-/*
-			<div>
-				<div>
-					<button type="button" className="more-button" onClick={this.handlePrevious}>
-						previous...
-					</button>
-					<div>
-						Page {page} of {this.pageCount()}
-					</div>
-					<button type="button" className="more-button" onClick={this.handleNext}>
-						next...
-					</button>
-				</div>
-				<div>{this.renderList()}</div>
-			</div>
-*/
 
 /*
 	fetchFollowers = async url => {
