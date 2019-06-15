@@ -72,7 +72,7 @@ class App extends React.Component {
 							<Followers id={user.id} url={user.followers_url} count={user.followers} onSelect={this.onSearchSubmit} />
 						</div>
 					)}
-					{error && <div className="error">Unable to get user; {error.message}</div>}
+					{error && <div className="error">Unable to find the user requested</div>}
 				</main>
 			</div>
 		);
@@ -80,6 +80,10 @@ class App extends React.Component {
 }
 
 export default App;
+
+/*
+error && <div className="error">Unable to get user; {error.message}</div>}
+*/
 
 /*
 	async fetchData(search) {
