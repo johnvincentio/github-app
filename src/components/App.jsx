@@ -1,12 +1,11 @@
 //
 
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import axios from 'axios';
 
-import Nav from './Nav';
 import Header from './header/Header';
+import Banner from './header/Banner';
 import User from './User';
 import UserButtons from './UserButtons';
 import Followers from './Followers';
@@ -57,9 +56,31 @@ class App extends React.Component {
 		}
 		return (
 			<div>
-				<Nav />
+				<Header />
 				<main role="main">
-					{!listUser && <Header onSubmit={this.onSearchSubmit} error={this.state.error} />}
+					{!listUser && <Banner onSubmit={this.onSearchSubmit} error={this.state.error} />}
+					{listUser && (
+						<div>
+							<User user={users.user} />
+							<UserButtons user={users.user} />
+							<Followers
+								id={users.user.id}
+								url={users.user.followers_url}
+								count={users.user.followers}
+								onSelect={this.onSearchSubmit}
+							/>
+						</div>
+					)}
+					{error && <div className="error">Unable to get user; {error.message}</div>}
+				</main>
+			</div>
+		);
+	}
+}
+
+export default App;
+
+/*
 					{listUser && <User user={users.user} />}
 					{listUser && <UserButtons user={users.user} />}
 					{listUser && (
@@ -70,14 +91,7 @@ class App extends React.Component {
 							onSelect={this.onSearchSubmit}
 						/>
 					)}
-					{error && <div className="error">Unable to get user; {error.message}</div>}
-				</main>
-			</div>
-		);
-	}
-}
-
-export default App;
+*/
 
 /*
 	async fetchData(search) {
