@@ -47,7 +47,7 @@ class App extends React.Component {
 	};
 
 	render() {
-		// console.log('App::render(); this.state ', this.state);
+		console.log('App::render(); this.state ', this.state, ' this.props ', this.props);
 		const { users, user, isLoading, error } = this.state;
 
 		// console.log('App::render(); user ', user, ' users ', users);
@@ -59,7 +59,7 @@ class App extends React.Component {
 			<div>
 				<Nav />
 				<main role="main">
-					<Header onSubmit={this.onSearchSubmit} error={this.state.error} />
+					{!listUser && <Header onSubmit={this.onSearchSubmit} error={this.state.error} />}
 					{listUser && <User user={users.user} />}
 					{listUser && <UserButtons user={users.user} />}
 					{listUser && (
