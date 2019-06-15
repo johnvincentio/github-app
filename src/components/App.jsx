@@ -14,7 +14,6 @@ const TOKEN = process.env.GITHUB_TOKEN;
 
 class App extends React.Component {
 	state = {
-		users: {},
 		user: null,
 		error: null,
 		isLoading: false
@@ -31,8 +30,7 @@ class App extends React.Component {
 			});
 			const { data } = response;
 			this.setState({
-				users: { id: data.id, user: data },
-				user: data.id,
+				user: data,
 				error: null,
 				isLoading: false
 			});
@@ -56,9 +54,9 @@ class App extends React.Component {
 
 	render() {
 		console.log('App::render(); this.state ', this.state, ' this.props ', this.props);
-		const { users, user, isLoading, error } = this.state;
+		const { user, isLoading, error } = this.state;
 
-		// console.log('App::render(); user ', user, ' users ', users);
+		// console.log('App::render(); user ', user);
 		const listUser = user !== null;
 		if (isLoading) {
 			return <p>Loading ...</p>;
@@ -70,14 +68,9 @@ class App extends React.Component {
 					{!listUser && <Banner onSubmit={this.onSearchSubmit} />}
 					{listUser && (
 						<div>
-							<User user={users.user} />
-							<UserButtons user={users.user} />
-							<Followers
-								id={users.user.id}
-								url={users.user.followers_url}
-								count={users.user.followers}
-								onSelect={this.onSearchSubmit}
-							/>
+							<User user={user} />
+							<UserButtons user={user} />
+							<Followers id={user.id} url={user.followers_url} count={user.followers} onSelect={this.onSearchSubmit} />
 						</div>
 					)}
 					{error && <div className="error">Unable to get user; {error.message}</div>}
