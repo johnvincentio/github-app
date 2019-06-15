@@ -86,3 +86,10 @@ $header-height: 64px;
     }
   }
 }
+
+@media only screen and (max-width: 350px) {
+  .header {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

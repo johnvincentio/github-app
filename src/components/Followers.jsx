@@ -118,6 +118,9 @@ class Followers extends React.Component {
 		const isPrevious = page > 1;
 		// console.log('isMore ', isMore, ' isPrevious ', isPrevious);
 
+		const previous = '<';
+		const next = '>';
+
 		return (
 			<section className="followers">
 				<h2 className="followers--header">Followers</h2>
@@ -126,13 +129,13 @@ class Followers extends React.Component {
 
 				<div className="followers--buttons">
 					<button type="button" className="followers--button" onClick={this.handlePrevious} disabled={!isPrevious}>
-						Previous...
+						{previous}
 					</button>
 					<div className="followers--text">
 						Page {page} of {this.pageCount()}
 					</div>
 					<button type="button" className="followers--button" onClick={this.handleNext} disabled={!isMore}>
-						Next...
+						{next}
 					</button>
 				</div>
 			</section>
