@@ -1,6 +1,7 @@
 //
 
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Icon from '../tools/Icon';
 
@@ -8,16 +9,19 @@ import Icon from '../tools/Icon';
 
 class Header extends React.Component {
 	render() {
+		const { search } = this.props;
 		return (
 			<div>
 				<header className="header">
-					<button type="button" className="header--title-link" onClick={this.select}>
+					<div className="header--title-link">
 						<Icon name="github" css="header--icon" />
 						GithubHelper
-					</button>
-					<button type="button" className="header--nav-link">
-						SEARCH
-					</button>
+					</div>
+					{search && (
+						<button type="button" className="header--nav-link" onClick={this.props.onSearchSelected}>
+							SEARCH
+						</button>
+					)}
 				</header>
 				<div className="header--spacer"></div>
 			</div>
@@ -25,16 +29,9 @@ class Header extends React.Component {
 	}
 }
 
-export default Header;
+Header.propTypes = {
+	search: PropTypes.bool.isRequired,
+	onSearchSelected: PropTypes.func.isRequired
+};
 
-/*
-<header className="header">
-	<a className="header--title-link" href="/">
-		<Icon name="github" css="header--icon" />
-		GithubHelper
-	</a>
-	<a className="header--nav-link" role="button" href="/signin">
-		<span className="header--nav-text">Search</span>
-	</a>
-</header>
-*/
+export default Header;

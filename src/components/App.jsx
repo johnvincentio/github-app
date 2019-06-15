@@ -45,6 +45,15 @@ class App extends React.Component {
 		}
 	};
 
+	onSearchSelected = () => {
+		console.log('App::onSearchSelected');
+		this.setState({
+			user: null,
+			error: null,
+			isLoading: false
+		});
+	};
+
 	render() {
 		console.log('App::render(); this.state ', this.state, ' this.props ', this.props);
 		const { users, user, isLoading, error } = this.state;
@@ -56,9 +65,9 @@ class App extends React.Component {
 		}
 		return (
 			<div>
-				<Header />
+				<Header search={listUser} onSearchSelected={this.onSearchSelected} />
 				<main role="main">
-					{!listUser && <Banner onSubmit={this.onSearchSubmit} error={this.state.error} />}
+					{!listUser && <Banner onSubmit={this.onSearchSubmit} />}
 					{listUser && (
 						<div>
 							<User user={users.user} />
@@ -79,19 +88,6 @@ class App extends React.Component {
 }
 
 export default App;
-
-/*
-					{listUser && <User user={users.user} />}
-					{listUser && <UserButtons user={users.user} />}
-					{listUser && (
-						<Followers
-							id={users.user.id}
-							url={users.user.followers_url}
-							count={users.user.followers}
-							onSelect={this.onSearchSubmit}
-						/>
-					)}
-*/
 
 /*
 	async fetchData(search) {

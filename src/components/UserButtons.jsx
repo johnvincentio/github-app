@@ -2,6 +2,8 @@
 
 import React from 'react';
 
+import PropTypes from 'prop-types';
+
 /* eslint-disable react/prefer-stateless-function */
 
 class UserButtons extends React.Component {
@@ -28,5 +30,9 @@ class UserButtons extends React.Component {
 		);
 	}
 }
+
+UserButtons.propTypes = {
+	user: PropTypes.object.isRequired // eslint-disable-line react/forbid-prop-types
+};
 
 export default UserButtons;

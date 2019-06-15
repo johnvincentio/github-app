@@ -2,6 +2,8 @@
 
 import React from 'react';
 
+import PropTypes from 'prop-types';
+
 /* eslint-disable react/prefer-stateless-function */
 
 class User extends React.Component {
@@ -28,5 +30,9 @@ class User extends React.Component {
 		);
 	}
 }
+
+User.propTypes = {
+	user: PropTypes.object.isRequired // eslint-disable-line react/forbid-prop-types
+};
 
 export default User;
