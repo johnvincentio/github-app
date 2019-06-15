@@ -1,6 +1,7 @@
 //
 
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import axios from 'axios';
 
@@ -10,7 +11,7 @@ class Followers extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			id: props.id,
+			// id: props.id,
 			count: props.count,
 			url: props.url,
 			followers: [],
@@ -90,7 +91,9 @@ class Followers extends React.Component {
 		const { followers } = this.state;
 		return followers.map(item => (
 			<figure key={item.id} className="followers--item">
-				<img src={item.avatar_url} alt={item.login} onClick={login => this.selectUser(item.login)} />
+				<button className="followers--item-button" type="button" onClick={() => this.selectUser(item.login)}>
+					<img src={item.avatar_url} alt={item.login} />
+				</button>
 				<figcaption>
 					<p>{item.login}</p>
 				</figcaption>
@@ -100,7 +103,7 @@ class Followers extends React.Component {
 
 	render() {
 		// console.log('Followers::render(); props ', this.props, ' this.state ', this.state);
-		const { followers, page, isLoading, error } = this.state;
+		const { page, isLoading, error } = this.state;
 		if (isLoading) {
 			return <p>Loading ...</p>;
 		}
@@ -136,5 +139,12 @@ class Followers extends React.Component {
 		);
 	}
 }
+
+Followers.propTypes = {
+	id: PropTypes.number.isRequired,
+	count: PropTypes.number.isRequired,
+	url: PropTypes.string.isRequired,
+	onSelect: PropTypes.func.isRequired
+};
 
 export default Followers;

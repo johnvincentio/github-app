@@ -1,5 +1,18 @@
 //
 
+%img-button {
+  background-color: transparent;
+  border: none transparent;
+  outline: none;
+  text-decoration: none;
+  border-radius: 2px;
+  line-height: normal;
+  white-space: nowrap;
+  text-align: center;
+  cursor: pointer;
+  text-rendering: auto;
+}
+
 .followers {
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -20,6 +33,10 @@
 
   &--item {
     padding: 20px 15px 0 15px;
+
+    &-button {
+      @extend %img-button;
+    }
   }
 
   img {

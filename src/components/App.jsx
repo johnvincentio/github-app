@@ -44,7 +44,6 @@ class App extends React.Component {
 	};
 
 	onSearchSelected = () => {
-		console.log('App::onSearchSelected');
 		this.setState({
 			user: null,
 			error: null,
@@ -53,7 +52,7 @@ class App extends React.Component {
 	};
 
 	render() {
-		console.log('App::render(); this.state ', this.state, ' this.props ', this.props);
+		// console.log('App::render(); this.state ', this.state, ' this.props ', this.props);
 		const { user, isLoading, error } = this.state;
 
 		// console.log('App::render(); user ', user);
