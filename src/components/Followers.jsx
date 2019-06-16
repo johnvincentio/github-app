@@ -22,19 +22,19 @@ class Followers extends React.Component {
 	}
 
 	componentDidMount() {
-		console.log('>>> Followers; componentDidMount; props ', this.props);
+		// console.log('>>> Followers; componentDidMount; props ', this.props);
 		this.fetchFollowers();
-		console.log('<<< Followers; componentDidMount');
+		// console.log('<<< Followers; componentDidMount');
 	}
 
 	// TODO; may not need this...
 	componentDidUpdate(prevProps) {
-		console.log('>>> Followers; componentDidUpdate; props ', this.props, ' prevProps ', prevProps);
+		// console.log('>>> Followers; componentDidUpdate; props ', this.props, ' prevProps ', prevProps);
 		if (prevProps.id !== this.props.id) {
-			console.log('--- Followers; componentDidUpdate; get fetchFollowers');
+			// console.log('--- Followers; componentDidUpdate; get fetchFollowers');
 			this.fetchFollowers();
 		}
-		console.log('<<< Followers; componentDidUpdate');
+		// console.log('<<< Followers; componentDidUpdate');
 	}
 
 	fetchFollowers = (page = 1) => {
