@@ -1,0 +1,14 @@
+#!/bin/sh
+#
+OUTFILE=static/robots.txt
+#
+MYHOST="https://www.mygithub.johnvincent.io"
+#echo "MYHOST $MYHOST"
+#
+echo "User-agent: *" > $OUTFILE
+echo "Allow: /" >> $OUTFILE
+echo "Sitemap: $MYHOST/sitemap.xml" >> $OUTFILE
+echo "Host: $MYHOST" >> $OUTFILE
+#
+cat $OUTFILE
+#
