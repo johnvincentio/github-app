@@ -30,6 +30,20 @@ const INCLUDE_SCSS_FOLDER = path.resolve(__dirname, './src');
 const INCLUDE_CSS_FOLDER = path.resolve(__dirname, './src');
 
 /*
+ * Define home url
+ */
+const { HOME_URL } = process.env;
+// console.log('HOME_URL ', HOME_URL);
+
+/*
+ * Define production mode
+ */
+
+// console.log('webpack; node-env ', process.env.NODE_ENV);
+const PRODUCTION_MODE = process.env.NODE_ENV === 'production';
+// console.log('webpack; PRODUCTION_MODE ', PRODUCTION_MODE);
+
+/*
  * Define plugins
  */
 
@@ -53,28 +67,15 @@ const HTMLPlugin = new HtmlWebpackPlugin({
 	FACEBOOK_APP_ID: transforms.FACEBOOK_APP_ID
 });
 
-const extractSCSSBundle = new MiniCssExtractPlugin({
-	filename: '[name].[contenthash].css',
-	chunkFilename: '[id].[contenthash].css'
-});
+let extractCSSOptions = { filename: '[name].css' };
+if (PRODUCTION_MODE) {
+	extractCSSOptions = {
+		filename: '[name].[contenthash].css',
+		chunkFilename: '[id].[contenthash].css'
+	};
+}
 
-const extractCSSBundle = new MiniCssExtractPlugin({
-	filename: '[name].css'
-});
-
-/*
- * Define home url
- */
-const { HOME_URL } = process.env;
-// console.log('HOME_URL ', HOME_URL);
-
-/*
- * Define production mode
- */
-
-// console.log('webpack; node-env ', process.env.NODE_ENV);
-const PRODUCTION_MODE = process.env.NODE_ENV === 'production';
-// console.log('webpack; PRODUCTION_MODE ', PRODUCTION_MODE);
+const extractCSSBundle = new MiniCssExtractPlugin(extractCSSOptions);
 
 /*
  * Define entry points
@@ -158,8 +159,7 @@ const plugins = [
 
 	HTMLPlugin,
 
-	extractSCSSBundle, // create css bundle from scss
-	extractCSSBundle, // allow import file.css
+	extractCSSBundle, // allow import scss and css
 
 	new CopyWebpackPlugin({
 		// copy assets
